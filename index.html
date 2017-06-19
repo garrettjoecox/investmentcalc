@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Investment Calc</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="dist/index.css">
+    <script src="dist/index.js"></script>
+  </head>
+  <body ng-app="investmentcalc" ng-controller="controller as controller">
+    <div class="jumbo">
+      <div class="heading">Investment Calc</div>
+      <div class="sec">
+        <span class="label">Investment</span>
+        $<input ng-model="controller.amount" class="value" type="number">
+      </div>
+      <div class="sec">
+        <span class="label">Goal</span>
+        $<input ng-model="controller.goal" class="value" type="number">
+      </div>
+      <div class="sec">
+        <span class="label">Percent Increase</span>
+        <span class="value">+{{controller.trim((controller.goal / controller.amount) * 100)}}%</span>
+      </div>
+    </div>
+    <div class="list" ng-if="controller.list.length">
+      <a ng-repeat="entry in controller.list" class="entry" href="https://coinmarketcap.com/currencies/{{entry.id}}/">
+        <div class="left">
+          <div class="logo">
+            <img ng-src="https://files.coinmarketcap.com/static/img/coins/16x16/{{entry.id}}.png" alt="{{entry.id}}">
+          </div>
+          <div class="name">
+            {{entry.name}}
+          </div>
+        </div>
+        <div class="right">
+          <div class="amount">
+            {{controller.calcAmount(entry)}}
+          </div>
+          @
+          <div class="price">
+            ${{controller.trim(entry.price_usd)}}
+          </div>
+          &rarr;
+          <div class="goal">
+            ${{controller.calcGoal(entry)}}
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="loading" ng-if="!controller.list.length">
+      Loading...
+    </div>
+  </body>
+</html>
