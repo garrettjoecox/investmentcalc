@@ -10,7 +10,7 @@
   </head>
   <body ng-app="investmentcalc" ng-controller="controller as controller">
     <div class="jumbo">
-      <div class="heading">Investment Calc</div>
+      <div class="heading"> Investment Calc </div>
       <div class="sec">
         <span class="label">Investment</span>
         $<input ng-model="controller.amount" class="value" type="number">
@@ -21,11 +21,27 @@
       </div>
       <div class="sec">
         <span class="label">Percent Increase</span>
-        <span class="value">+{{controller.trim((controller.goal / controller.amount) * 100)}}%</span>
+        <span class="value">{{controller.trim(((controller.goal - controller.amount) / controller.amount) * 100)}}%</span>
+      </div>
+    </div>
+    <div class="legend">
+      <input ng-model="controller.search" class="search" type="search" placeholder="Search Coins">
+      <div class="right">
+        <div class="amount">
+          Token Amount
+        </div>
+        @
+        <div class="price">
+          Current Price
+        </div>
+        &rarr;
+        <div class="goal">
+          Target Price
+        </div>
       </div>
     </div>
     <div class="list" ng-if="controller.list.length">
-      <a ng-repeat="entry in controller.list" class="entry" href="https://coinmarketcap.com/currencies/{{entry.id}}/">
+      <a ng-repeat="entry in controller.list | filter:controller.search" class="entry" href="https://coinmarketcap.com/currencies/{{entry.id}}/">
         <div class="left">
           <div class="logo">
             <img ng-src="https://files.coinmarketcap.com/static/img/coins/16x16/{{entry.id}}.png" alt="{{entry.id}}">
@@ -52,5 +68,13 @@
     <div class="loading" ng-if="!controller.list.length">
       Loading...
     </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-88756080-2', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
 </html>

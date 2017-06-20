@@ -1,7 +1,12 @@
 (() => {
   angular
     .module('investmentcalc', [])
+    .config(Config)
     .controller('controller', Controller);
+
+  function Config($locationProvider) {
+    $locationProvider.hashPrefix('');
+  }
 
   function Controller($http) {
     this.amount = 50;
@@ -16,7 +21,7 @@
       return this.trim(entry.price_usd * (this.goal / this.amount));
     };
 
-    $http.get('https://api.coinmarketcap.com/v1/ticker/?limit=100')
+    $http.get('https://api.coinmarketcap.com/v1/ticker/?limit=200')
       .then(({ data }) => {
         this.list = data;
       })

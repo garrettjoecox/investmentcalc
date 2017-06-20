@@ -59,10 +59,61 @@ body {
   font-weight: 100;
 }
 
+.legend {
+  display: flex;
+  border-bottom: 1px solid #AAA;
+  padding: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .search {
+    flex: 1;
+    padding: 0.5rem;
+    border: 0;
+    background: 0;
+    outline: none;
+    width: 100%;
+
+    &::placeholder {
+      color: #BBB;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .right {
+      display: none;
+    }
+  }
+}
+
+.amount, .price, .goal {
+  background: #F5F5F5;
+  border: 1px solid #EEE;
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: #333;
+}
+
+.price {
+  background-color: #fcf8e3;
+  border-color: #faf2cc;
+  color: #8a6d3b;
+}
+
+.goal {
+  background-color: #dff0d8;
+  border-color: #d0e9c6;
+  color: #3c763d;
+}
+
 .list {
-  border-top: 1px solid #AAA;
   flex: 1 0;
-  max-height: calc(100vh - 9.5rem);
+  max-height: calc(100vh - 12.5rem);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
@@ -78,39 +129,21 @@ body {
 
   .entry {
     display: flex;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #DDD;
+    margin: 0 5px;
     padding: 0.5rem;
     text-decoration: none;
     color: black;
     transition: background-color 100ms ease;
     flex-wrap: wrap;
+    outline: 0;
 
-    &:hover {
+    &:hover, &:focus {
       background: #F5F5F5;
     }
 
     .logo {
       padding-right: 0.5rem;
-    }
-
-    .amount, .price, .goal {
-      background: #F5F5F5;
-      border: 1px solid #EEE;
-      border-radius: 4px;
-      padding: 0.5rem;
-      color: #333;
-    }
-
-    .price {
-      background-color: #fcf8e3;
-      border-color: #faf2cc;
-      color: #8a6d3b;
-    }
-
-    .goal {
-      background-color: #dff0d8;
-      border-color: #d0e9c6;
-      color: #3c763d;
     }
   }
 }
