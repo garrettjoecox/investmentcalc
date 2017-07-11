@@ -92,23 +92,23 @@ body {
 }
 
 .amount, .price, .goal {
-  background: #F5F5F5;
-  border: 1px solid #EEE;
-  border-radius: 4px;
+  background: #1FB6FF;
+  border: 2px solid #009EEB;
+  border-radius: 2px;
   padding: 0.5rem;
-  color: #333;
+  color: white;
 }
 
 .price {
-  background-color: #fcf8e3;
-  border-color: #faf2cc;
-  color: #8a6d3b;
+  background-color: #FF7849;
+  border-color: #FF5216;
+  color: white;
 }
 
 .goal {
-  background-color: #dff0d8;
-  border-color: #d0e9c6;
-  color: #3c763d;
+  background-color: #13CE66;
+  border-color: #0F9F4F;
+  color: white;
 }
 
 .list {
@@ -117,25 +117,26 @@ body {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
-  .right, .left {
+  .right {
     flex: 1 0 auto;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
 
-  .right {
-    justify-content: flex-end;
+  .left {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
   }
 
   .entry {
     display: flex;
     border-bottom: 1px solid #DDD;
-    margin: 0 5px;
     padding: 0.5rem;
     text-decoration: none;
     color: black;
     transition: background-color 100ms ease;
-    flex-wrap: wrap;
     outline: 0;
 
     &:hover, &:focus {
@@ -144,6 +145,11 @@ body {
 
     .logo {
       padding-right: 0.5rem;
+    }
+
+    .name {
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
